@@ -4,83 +4,68 @@ A Logistic Regression Assignment to construct a model using RFE
 
 ## Problem Statement
 
-A bike-sharing system is a service in which bikes are made available for shared use to individuals on a short term basis for a price or free. Many bike share systems allow people to borrow a bike from a "dock" which is usually computer-controlled wherein the user enters the payment information, and the system unlocks it. This bike can then be returned to another dock belonging to the same system.
+An education company named X Education sells online courses to industry professionals. On any given day, many professionals who are interested in the courses land on their website and browse for courses.
 
-A US bike-sharing provider BoomBikes has recently suffered considerable dips in their revenues due to the ongoing Corona pandemic. The company is finding it very difficult to sustain in the current market scenario. So, it has decided to come up with a mindful business plan to be able to accelerate its revenue as soon as the ongoing lockdown comes to an end, and the economy restores to a healthy state.
+The company markets its courses on several websites and search engines like Google. Once these people land on the website, they might browse the courses or fill up a form for the course or watch some videos. When these people fill up a form providing their email address or phone number, they are classified to be a lead. Moreover, the company also gets leads through past referrals. Once these leads are acquired, employees from the sales team start making calls, writing emails, etc. Through this process, some of the leads get converted while most do not. The typical lead conversion rate at X education is around 30%.
 
-In such an attempt, BoomBikes aspires to understand the demand for shared bikes among the people after this ongoing quarantine situation ends across the nation due to Covid-19. They have planned this to prepare themselves to cater to the people's needs once the situation gets better all around and stand out from other service providers and make huge profits.
-
-They have contracted a consulting company to understand the factors on which the demand for these shared bikes depends. Specifically, they want to understand the factors affecting the demand for these shared bikes in the American market. The company wants to know:
-
-• Which variables are significant in predicting the demand for shared bikes.
-
-• How well those variables describe the bike demands
-
-Based on various meteorological surveys and people's styles, the service provider firm has gathered a large dataset on daily bike demands across the American market based on some factors.
+Now, although X Education gets a lot of leads, its lead conversion rate is very poor. For example, if, say, they acquire 100 leads in a day, only about 30 of them are converted. To make this process more efficient, the company wishes to identify the most potential leads, also known as ‘Hot Leads’. If they successfully identify this set of leads, the lead conversion rate should go up as the sales team will now be focusing more on communicating with the potential leads rather than making calls to everyone. 
 
 ## Dataset Used
 
-The dataset being used is day.csv
-day.csv have the following fields:
+The dataset being used is Leads.csv
+Leads.csv have the following fields:
 	
-	- instant: record index
-	- dteday : date
-	- season : season (1:spring, 2:summer, 3:fall, 4:winter)
-	- yr : year (0: 2018, 1:2019)
-	- mnth : month ( 1 to 12)
-	- holiday : weather day is a holiday or not (extracted from http://dchr.dc.gov/page/holiday-schedule)
-	- weekday : day of the week
-	- workingday : if day is neither weekend nor holiday is 1, otherwise is 0.
-	+ weathersit : 
-		- 1: Clear, Few clouds, Partly cloudy, Partly cloudy
-		- 2: Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist
-		- 3: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds
-		- 4: Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog
-	- temp : temperature in Celsius
-	- atemp: feeling temperature in Celsius
-	- hum: humidity
-	- windspeed: wind speed
-	- casual: count of casual users
-	- registered: count of registered users
-	- cnt: count of total rental bikes including both casual and registered
-## License of the dataset
-Use of this dataset in publications must be cited to the following publication:
+	| Field Name                                  | Description                                                                                      |
+|---------------------------------------------|--------------------------------------------------------------------------------------------------|
+| Prospect ID                                 | A unique ID with which the customer is identified.                                                |
+| Lead Number                                 | A lead number assigned to each lead procured.                                                     |
+| Lead Origin                                 | The origin identifier with which the customer was identified to be a lead. Includes API, Landing Page Submission, etc. |
+| Lead Source                                 | The source of the lead. Includes Google, Organic Search, Olark Chat, etc.                            |
+| Do Not Email                                | An indicator variable selected by the customer wherein they select whether or not they want to be emailed about the course or not. |
+| Do Not Call                                 | An indicator variable selected by the customer wherein they select whether or not they want to be called about the course or not. |
+| Converted                                   | The target variable. Indicates whether a lead has been successfully converted or not.              |
+| TotalVisits                                 | The total number of visits made by the customer on the website.                                    |
+| Total Time Spent on Website                | The total time spent by the customer on the website.                                              |
+| Page Views Per Visit                       | Average number of pages on the website viewed during the visits.                                   |
+| Last Activity                               | Last activity performed by the customer. Includes Email Opened, Olark Chat Conversation, etc.       |
+| Country                                     | The country of the customer.                                                                      |
+| Specialization                              | The industry domain in which the customer worked before. Includes the level 'Select Specialization' which means the customer had not selected this option while filling the form. |
+| How did you hear about X Education          | The source from which the customer heard about X Education.                                         |
+| What is your current occupation             | Indicates whether the customer is a student, unemployed, or employed.                                |
+| What matters most to you in choosing this course | An option selected by the customer indicating what is their main motto behind doing this course. |
+| Search                                      | Indicating whether the customer had seen the ad in any of the listed items.                          |
+| Magazine                                    |                                                                                                  |
+| Newspaper Article                           |                                                                                                  |
+| X Education Forums                          |                                                                                                  |
+| Newspaper                                   |                                                                                                  |
+| Digital Advertisement                       |                                                                                                  |
+| Through Recommendations                     | Indicates whether the customer came in through recommendations.                                    |
+| Receive More Updates About Our Courses      | Indicates whether the customer chose to receive more updates about the courses.                     |
+| Tags                                        | Tags assigned to customers indicating the current status of the lead.                                |
+| Lead Quality                                | Indicates the quality of lead based on the data and intuition of the employee who has been assigned to the lead. |
+| Update me on Supply Chain Content           | Indicates whether the customer wants updates on the Supply Chain Content.                            |
+| Get updates on DM Content                   | Indicates whether the customer wants updates on the DM Content.                                    |
+| Lead Profile                                | A lead level assigned to each customer based on their profile.                                      |
+| City                                        | The city of the customer.                                                                          |
+| Asymmetrique Activity Index                 | An index and score assigned to each customer based on their activity and their profile.            |
+| Asymmetrique Profile Index                  |                                                                                                  |
+| Asymmetrique Activity Score                 |                                                                                                  |
+| Asymmetrique Profile Score                  |                                                                                                  |
+| I agree to pay the amount through cheque    | Indicates whether the customer has agreed to pay the amount through a cheque or not.               |
+| A free copy of Mastering The Interview      | Indicates whether the customer wants a free copy of 'Mastering the Interview' or not.               |
+| Last Notable Activity                       | The last notable activity performed by the student.                                                |
 
-Fanaee-T, Hadi, and Gama, Joao, "Event labeling combining ensemble detectors and background knowledge", Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg, doi:10.1007/s13748-013-0040-3.
 
-@article{
-	year={2013},
-	issn={2192-6352},
-	journal={Progress in Artificial Intelligence},
-	doi={10.1007/s13748-013-0040-3},
-	title={Event labeling combining ensemble detectors and background knowledge},
-	url={http://dx.doi.org/10.1007/s13748-013-0040-3},
-	publisher={Springer Berlin Heidelberg},
-	keywords={Event labeling; Event detection; Ensemble learning; Background knowledge},
-	author={Fanaee-T, Hadi and Gama, Joao},
-	pages={1-15}
-}
 
 ## Conclusions
-| Feature          | Correlation Coefficient | Inference                                      |
-| ---------------- | ---------------------- | ---------------------------------------------- |
-| temp             | 0.549936               | Change in temperature affects rentals        |
-| yr               | 0.233056               | Increase in bike rentals per year            |
-| Light_Snow_Rain  | -0.288021              | Snow and rain inversely proportional to rentals |
+| Feature           | Correlation Coefficient |
+| ----------------  | ---------------------- | 
+| Tags_Lost to EINS | 6.25   | 
+| Tags_Closed by Horizzon | 5.22   |
+| Lead Source_Welingak Website | 4.02   | 
 
 ## Technology Used
 Jupyter Notebook version 6.5.4
-
-## Acknowledgements
-- This project was inspired by UpGrad
-  
-## References 
-1. https://seaborn.pydata.org/
-2. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
-3. https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols_ridge_variance.htmlhttps://www.simplilearn.com/tutorials/scikit-learn-tutorial/sklearn-linear-regression-with-examples
-4. https://python.plainenglish.io/ols-linear-regression-basics-with-pythons-scikit-learn-4ecfe88145b
-5. https://python.plainenglish.io/simple-linear-regression-with-ols-using-scikit-learn-41cdde1041d5
-6. https://stackabuse.com/linear-regression-in-python-with-scikit-learn/
 
 ## Contact
 Created by Kanishka Sinha - feel free to contact me!
