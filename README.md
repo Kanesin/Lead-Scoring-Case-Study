@@ -15,7 +15,7 @@ Now, although X Education gets a lot of leads, its lead conversion rate is very 
 The dataset being used is Leads.csv
 Leads.csv have the following fields:
 	
-	| Field Name                                  | Description                                                                                      |
+| Field Name                                  | Description                                                                                      |
 |---------------------------------------------|--------------------------------------------------------------------------------------------------|
 | Prospect ID                                 | A unique ID with which the customer is identified.                                                |
 | Lead Number                                 | A lead number assigned to each lead procured.                                                     |
